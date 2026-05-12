@@ -1,0 +1,8 @@
+When finding out the averages for this listener we see that their average energy, valence and danceability is 65.906%, 48.4443% and 71.646% respectively therefore representing the Thoughtful Groover represented by a deep blue or violet aura colour
+
+The way it is currently calculated is inefficient as it ignores the play count of a listener essentially treating one song played a 100 times the same as playing a 100 songs played of similar taste.
+It also treats songs listened to at the start of the tracking cycle the same as congs listened to more recently ignoring how people's tastes in music constantly evolve and develope
+
+Ideally to improve the accuracy at which audio aura represents a listener we could firstly increase sample size which increases the accuracy of the averages returned making it more accurate.
+Another way could be by fixing previously mentioned issues where more emphasize is places on when a song was listened to and how many times a particular song was played.
+Placing more weight or more recent and frequently listened to songs
