@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            //function to check answer to first question
+            function checkAnswer1(event) {
+                //assigns input as the reference to element that triggered the event
+                let input = event.target;
+                //finds elements witihin the same form as the input element and stores them in allLabels
+                let allLabels = input.closest('form').querySelectorAll('label')
+                //pages through each label and sets colour to null
+                allLabels.forEach(function(label) {
+                    label.style.backgroundColor = "";
+                })
+                //if statement that checks user input
+                if (input.id == "Son") {
+
+                    input.parentElement.style.backgroundColor = "Green";
+                    input.parentElement.querySelector('.feedback').innerHTML = 'Correct';
+                } else {
+                    input.parentElement.style.backgroundColor = "Red";
+                    input.parentElement.querySelector('.feedback').innerHTML = 'Incorrect';
+                }
+            }
+            //function to check answer to second question
+            function checkAnswer2(event) {
+                //prevents page from refreshing
+                event.preventDefault();
+                //#TODO
+                //gets element and assigns to inputField
+                let inputField = document.getElementById('frAnswer');
+                //assigns user inout toanswer in all small letters
+                let answer = inputField.value.toLowerCase();
+                //checks user input against accepted values
+                if (answer == "tottenham" || answer == "tottenham hotspur" || answer == "spurs") {
+                    inputField.style.backgroundColor = "Green";
+                    inputField.parentElement.querySelector('.feedback').innerHTML = 'Correct';
+                } else {
+                    inputField.style.backgroundColor = "Red";
+                    inputField.parentElement.querySelector('.feedback').innerHTML = 'Incorrect';
+                }
+
+            }
+        </script>
+    </head>
+
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <h3>Who is Spurs 2nd Top Goalscorer</h3>
+                <form>
+                    <label><input type="radio" name="question1" id="Bale" onclick="checkAnswer1(event)">Bale</label><br>
+                    <label><input type="radio" name="question1" id="AlanShearer" onclick="checkAnswer1(event)">Alan Shearer</label><br>
+                    <label><input type="radio" name="question1" id="Son" onclick="checkAnswer1(event)">Son</label><br>
+                    <label><input type="radio" name="question1" id="Defoe" onclick="checkAnswer1(event)">Defoe</label><br>
+                    <p class="feedback"></p>
+                </form>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <h3>What is the most recent club in London to win a European Trophy?(ensure you write fullnames)</h3>
+                <form onsubmit="checkAnswer2(event)">
+                    <input autocomplete="off" autofocus type="text" name="answer" placeholder="Answer" id='frAnswer'>
+                    <input type="submit" name="Confirm Answer">
+                    <p class="feedback"></p>
+                </form>
+            </div>
+        </div>
+    </body>
+
+</html>
